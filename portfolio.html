@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Bilal Javed — Portfolio</title>
+
+  <style>
+    /* Root variables for easy theming */
+    :root{
+      --bg:#f7f9fc;
+      --card:#ffffff;
+      --muted:#68708a;
+      --accent:#4f46e5; /* indigo-ish */
+      --accent-2:#06b6d4; /* teal-ish */
+      --glass: rgba(255,255,255,0.6);
+      --radius:14px;
+      --shadow: 0 6px 20px rgba(28,36,50,0.08);
+      --soft-shadow: 0 3px 10px rgba(28,36,50,0.06);
+      --max-width:1100px;
+    }
+
+    /* Global Reset + sensible defaults */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg),#ffffff);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:32px 16px;
+      display:flex;
+      justify-content:center;
+    }
+
+    /* Page container to center content */
+    main{width:100%;max-width:var(--max-width);}
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      background:transparent;
+      margin-bottom:18px;
+    }
+
+    header h1{
+      margin:0;font-size:20px;letter-spacing:0.2px;
+    }
+
+    header p{margin:0;color:var(--muted);font-size:13px}
+
+    header hr{flex:1;margin-left:18px;border:0;border-top:1px solid rgba(15,23,42,0.06)}
+
+    /* Use table layout as in your HTML but modernize look */
+    table[role="presentation"]{width:100%;border-collapse:separate;border-spacing:16px}
+
+    /* SIDEBAR / VCARD */
+    td[width="280"]{width:280px;vertical-align:top}
+    td[width="280"] > table{
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), var(--card));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+      width:100%;
+    }
+
+    img{border-radius:999px;display:block}
+
+    td[width="280"] h2{margin:10px 0 4px;font-size:18px}
+    td[width="280"] p{margin:0;color:var(--muted)}
+
+    address{font-style:normal;color:var(--muted);font-size:13px}
+
+    /* Quick links, skills, lists */
+    td[width="280"] ul{padding-left:18px;margin:8px 0 0}
+    td[width="280"] li{margin:8px 0;font-size:14px}
+
+    /* Badges for skills */
+    .skill-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .badge{background:linear-gradient(180deg, rgba(79,70,229,0.08), rgba(6,182,212,0.03));
+           color:var(--accent);padding:6px 10px;border-radius:999px;font-size:12px;border:1px solid rgba(79,70,229,0.06)}
+
+    /* RIGHT COLUMN styling */
+    td[valign="top"]:not([width="280"]){vertical-align:top}
+    section{background:var(--card);border-radius:12px;padding:18px;margin-bottom:16px;box-shadow:var(--soft-shadow)}
+    section h2{margin-top:0;margin-bottom:10px}
+
+    article{margin-bottom:12px}
+    article h3{margin:6px 0}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Experience list */
+    dl{margin:0}
+    dt{font-weight:600;margin-top:10px}
+    dd{margin:4px 0 12px;color:var(--muted)}
+
+    /* Achievements as chips */
+    #achievements ul{display:flex;flex-wrap:wrap;gap:10px;padding-left:0;list-style:none;margin:0}
+    #achievements li{background:var(--glass);padding:8px 10px;border-radius:8px;font-size:13px;border:1px solid rgba(15,23,42,0.04)}
+
+    /* Contact CTA */
+    #contact p{margin:6px 0}
+    .cta{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;font-weight:600;text-decoration:none;box-shadow: 0 8px 20px rgba(79,70,229,0.18)}
+    .cta:hover{transform:translateY(-2px)}
+
+    footer{margin-top:10px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* Responsive: stack columns on smaller screens */
+    @media (max-width:880px){
+      table[role="presentation"]{border-spacing:8px}
+      td[width="280"]{display:block;width:100%}
+      td[width="280"] > table{margin-bottom:12px}
+      td[width="280"], td[valign="top"]:not([width="280"]){width:100%!important}
+    }
+
+    /* Small micro animation on load */
+    @keyframes floatIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+    section, td[width="280"]>table{animation:floatIn .45s ease both}
+
+    /* Accessibility focus states */
+    a:focus{outline:3px solid rgba(99,102,241,0.18);outline-offset:3px}
+
+    /* Utility: subtle divider */
+    hr{border:0;border-top:1px solid rgba(15,23,42,0.06)}
+  </style>
+</head>
+<body>
+  <!-- Top header -->
+  <header>
+    <div>
+      <h1>Bilal Javed</h1>
+      <p>Full-Stack Developer · Data Structures &amp; Algorithms</p>
+    </div>
+    <hr aria-hidden="true">
+  </header>
+
+  <!-- Main layout: table used to create two-column vcard-like layout (HTML-only) -->
+  <main>
+    <table width="100%" cellspacing="12" cellpadding="6" role="presentation">
+      <tr valign="top">
+        <!-- LEFT COLUMN: Sidebar / vCard -->
+        <td width="280" valign="top">
+          <!-- Profile card -->
+          <table width="100%" cellpadding="6" cellspacing="6" border="0" role="presentation">
+            <tr>
+              <td align="center">
+                <!-- Replace avatar.png with your photo in the same folder -->
+                <img src="avatar.png" alt="Bilal Javed — profile photo" width="150" height="150">
+              </td>
+            </tr>
+            <tr>
+              <td align="center">
+                <h2>Bilal Javed</h2>
+                <p><strong>Full-Stack Developer</strong></p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>Contact</h3>
+                <address>
+                  Email: <a href="mailto:bilalj03170@gmail.com">bilalj03170@gmail.com</a><br>
+                  Phone: <a href="tel:+923175198389">+92 317 5198389</a><br>
+                  Location: Rawalpindi, Pakistan
+                </address>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <h3>Quick Links</h3>
+                <ul>
+                  <li><a href="https://github.com/bilalja290" target="_blank" rel="noopener">GitHub</a></li>
+                  <li><a href="https://www.linkedin.com/in/bilal-javed-bilal-javed-679985397/" target="_blank" rel="noopener">LinkedIn</a></li>
+                  <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <h3>Skills</h3>
+                <div class="skill-badges">
+                  <span class="badge">HTML5</span>
+                  <span class="badge">CSS3</span>
+                  <span class="badge">JavaScript</span>
+                  <span class="badge">C++ (DSA)</span>
+                  <span class="badge">Python</span>
+                  <span class="badge">SQL</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <h3>Availability</h3>
+                <p>Open to internships &amp; freelance work · Available from <strong>Dec 2025</strong></p>
+              </td>
+            </tr>
+          </table>
+        </td>
+
+        <!-- RIGHT COLUMN: Content (About, Projects, Experience, Contact) -->
+        <td valign="top">
+          <!-- About -->
+          <section id="about">
+            <h2>About</h2>
+            <p>
+              I’m a detail-oriented Computer Science student at Iqra University, passionate about building maintainable web apps
+              and solving algorithmic problems. I focus on semantic HTML, accessibility, and writing clean code.
+            </p>
+          </section>
+
+          <!-- Projects -->
+          <section id="projects">
+            <h2>Projects</h2>
+
+            <article>
+              <h3>Online Food Delivery System (DBMS Project)</h3>
+              <p>
+                Designed a database-driven food delivery system using SQL Server Management Studio. Implemented schemas, stored procedures,
+                and sample queries for order management, vendor onboarding, and delivery tracking.
+              </p>
+              <p><a href="https://bilalja290.github.io/Main/" target="_blank" rel="noopener">View on GitHub</a></p>
+            </article>
+
+            <article>
+              <h3>Car Parking Management System (DSA Project)</h3>
+              <p>
+                Implemented a parking-management solution in C++ using queues and heaps for efficient slot allocation and billing simulation.
+              </p>
+              <p><a href="https://bilalja290.github.io/Main/" target="_blank" rel="noopener">View on GitHub</a></p>
+            </article>
+
+            <article>
+              <h3>DSA Practice Report</h3>
+              <p>Collection of algorithm problems solved in C++ with explanations: linked lists, trees, graphs, and greedy algorithms.</p>
+              <p><a href="https://github.com/bilaljaved/dsa-repo" target="_blank" rel="noopener">View on GitHub</a></p>
+            </article>
+          </section>
+
+          <!-- Experience & Education -->
+          <section id="experience">
+            <h2>Experience &amp; Education</h2>
+            <dl>
+              <dt><strong>Software Intern — Local Company</strong></dt>
+              <dd>Jan 2025 – Apr 2025 · Islamabad — Backend APIs, unit testing, performance improvements.</dd>
+
+              <dt><strong>BSc (Computer Science) — Iqra University</strong></dt>
+              <dd>2022 – 2026 — Key courses: Data Structures, Algorithms, DBMS, Automata Theory.</dd>
+            </dl>
+          </section>
+
+          <!-- Achievements -->
+          <section id="achievements">
+            <h2>Achievements</h2>
+            <ul>
+              <li>Certifications in Python and Web Development</li>
+              <li>Certification in Data Structures and Algorithms</li>
+              <li>Certification from w3school</li>
+            </ul>
+          </section>
+
+          <!-- Contact / Call to Action -->
+          <section id="contact">
+            <h2>Contact</h2>
+            <p>
+              interested in doing work with me then dm me on my email or phone number. Thank you!
+           </p>
+            <p><strong>Email:</strong> <a href="mailto:bilalj0317@gmail.com">bilalj0317@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+923175198389">+92 317 5198389</a></p>
+            <p><a class="cta" href="mailto:bilalj03170@gmail.com">Send Email</a></p>
+          </section>
+        </td>
+      </tr>
+    </table>
+  </main>
+
+  <footer>
+    <hr>
+    <p>© <time datetime="2025">2025</time> Bilal Javed - Portfolio with html and css .</p>
+  </footer>
+</body>
+</html>
